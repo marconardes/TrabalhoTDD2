@@ -1,38 +1,48 @@
 import static org.junit.Assert.*;
 
-import java.lang.reflect.Method;
-
 import org.junit.Before;
 import org.junit.Test;
 
 import main.CaixaEletronico;
+import main.Envelope;
 import main.Hardware;
+import mocks.ContaCorrente;
 import net.sf.esfinge.classmock.ClassMock;
 
 public class TesteCaixaEletronico {
 	
-
+	CaixaEletronico caixaEletronico;
+	ContaCorrente mockConta;
+	
+	@Before
+	public void SetUp()
+	{
+		caixaEletronico = new CaixaEletronico();
+		mockConta = new ContaCorrente(100, "123456789");
+	}
 	
 	@Test
 	public void testLogin(){
 		
-		//Sem erro, não estou testando a o Hardware
-		CaixaEletronico caixaEletronico = new CaixaEletronico();
+		//Sem erro, nao estou testando a o Hardware
 		
 		String c = caixaEletronico.logar();
 		
-		assertEquals("Usuário Autenticado",c);
+		assertEquals("Usuaario Autenticado",c);
 		
 	}
 	@Test
 	public void testDepositar() {
 		
-		CaixaEletronico caixaEletronico = new CaixaEletronico();
+	
 		
-		//Sem erro, não estou testando a o Hardware
-		String depositar = caixaEletronico.depositar();
 		
-		assertEquals("Depósito recebido com sucesso",depositar);
+		Envelope e = new Envelope(50.00);
+		String login = caixaEletronico.logar();
+		String depositar = caixaEletronico.depositar(e);
+		
+		assertEquals("Usuaario Autenticado",login);
+		assertEquals("Deposito recebido com sucesso",depositar);
 		
 	}
 	
@@ -41,10 +51,9 @@ public class TesteCaixaEletronico {
 		
 		CaixaEletronico caixaEletronico = new CaixaEletronico();
 		
-		//Sem erro, não estou testando a o Hardware
-		String depositar = caixaEletronico.sacar(10.00);
+		String sacar = caixaEletronico.sacar(10.00);
 		
-		assertEquals("Retire seu dinheiro",depositar);
+		assertEquals("Retire seu dinheiro",sacar);
 		
 	}
 

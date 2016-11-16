@@ -4,17 +4,19 @@ package main;
 public class CaixaEletronico {
 
 	public String logar() {
-		return "Usuário Autenticado";
+		return "Usuario Autenticado";
 	}
 	
-	public String depositar() {
-		return "Depósito recebido com sucesso";
+	public String depositar(Envelope e) {
+		return "Deposito recebido com sucesso";
 	}
 
 	public String sacar(double d) {
 		
 		return "Retire seu dinheiro";
 	}
+
+
 
 
 }
