@@ -11,5 +11,10 @@ public class CaixaEletronico {
 		return "Depósito recebido com sucesso";
 	}
 
+	public String sacar(double d) {
+		
+		return "Retire seu dinheiro";
+	}
+
 
 }

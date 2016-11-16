@@ -14,7 +14,7 @@ public class TesteCaixaEletronico {
 
 	
 	@Test
-	public void testLogin() throws InstantiationException, IllegalAccessException {
+	public void testLogin(){
 		
 		//Sem erro, não estou testando a o Hardware
 		CaixaEletronico caixaEletronico = new CaixaEletronico();
@@ -33,6 +33,18 @@ public class TesteCaixaEletronico {
 		String depositar = caixaEletronico.depositar();
 		
 		assertEquals("Depósito recebido com sucesso",depositar);
+		
+	}
+	
+	@Test
+	public void testSacar() {
+		
+		CaixaEletronico caixaEletronico = new CaixaEletronico();
+		
+		//Sem erro, não estou testando a o Hardware
+		String depositar = caixaEletronico.sacar(10.00);
+		
+		assertEquals("Retire seu dinheiro",depositar);
 		
 	}
 
